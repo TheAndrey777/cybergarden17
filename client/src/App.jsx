@@ -1,9 +1,9 @@
-import Review from './components/Review.jsx';
+import ProfileHeader from './components/ProfileHeader.jsx';
 
 function App() {
   return (
     <div>
-      <Review />
+      <ProfileHeader />
     </div>
   );
 }
