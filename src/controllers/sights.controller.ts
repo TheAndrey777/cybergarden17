@@ -8,6 +8,7 @@ import { HttpException } from "../exceptions/http.exception";
 import sightService from "../services/sight.service";
 import userService from "../services/user.service";
 import reviewService from "../services/review.service";
+import { UserNotFoundException } from "../exceptions/auth.exceptions";
 
 class SightsController {
   async getSight(req: Request, res: Response, next: NextFunction) {
@@ -82,6 +83,39 @@ class SightsController {
     res.send({
       status: "success"
     });
+  }
+
+  async toggleMarkSight(req: Request, res: Response, next: NextFunction) {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return next(new ValidationException);
+    }
+
+    const sight = await sightService.getSight(Number(req.params.id));
+    if (!sight) {
+      return next(new SightNotExistsException);
+    }
+    const user = await userService.getUserFavourites(Number(req.user?.id));
+    if (!user) {
+      return next(new UserNotFoundException);
+    }
+
+    const favourites = user.favourites;
+    let j = -1;
+    for (let i = 0; i < favourites.length; i++) {
+      if (favourites[i].id == sight.id) {
+        j = i;
+        break;
+      }
+    } 
+
+    if (j > -1)
+      favourites.splice(j, 1);
+    else
+      favourites.push(sight);
+
+    await userService.updateUserFavourites(user, favourites);
+    res.send({ status: "success" });
   }
 }
 

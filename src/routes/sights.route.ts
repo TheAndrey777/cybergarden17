@@ -17,13 +17,20 @@ sightsRouter.post(
 );
 
 sightsRouter.post(
+  "/:id/mark/toggle",
+  param("id").exists().isNumeric(),
+  authenticateUser,
+  sightsController.toggleMarkSight
+);
+
+sightsRouter.post(
   "/:id/rate",
   param("id").exists().isNumeric(),
   body("desc").exists(),
   body("grade").exists().isInt({ min: 1, max: 5 }),
   authenticateUser,
   sightsController.rateSight
-  );
+);
 
 sightsRouter.get(
   "/:id",

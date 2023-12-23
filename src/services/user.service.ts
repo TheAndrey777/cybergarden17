@@ -30,6 +30,22 @@ class UserService {
     return await User.save(User.create(user));
   }
 
+  async getUserFavourites(userId: number) {
+    return await User.findOne({
+      where: {
+        id: userId
+      },
+      relations: {
+        favourites: true
+      }
+    });
+  }
+
+  async updateUserFavourites(user: any, favourites: any) {
+    user.favourites = favourites;
+    return await user.save();
+  }
+
   async createUser(user: any) {
     return await User.save(User.create(user));
   }

@@ -1,5 +1,6 @@
-import { BaseEntity, PrimaryGeneratedColumn, Column, Entity, OneToMany } from "typeorm";
+import { BaseEntity, PrimaryGeneratedColumn, Column, Entity, OneToMany, ManyToMany, JoinTable } from "typeorm";
 import { Review } from "./Review";
+import { Sight } from "./Sight";
 
 @Entity("users")
 export class User extends BaseEntity {
@@ -23,6 +24,10 @@ export class User extends BaseEntity {
     (review) => review.creator
   )
   reviews: Review[];
+
+  @ManyToMany(() => Sight, { onDelete: 'CASCADE' })
+  @JoinTable()
+  favourites: Sight[];
 
   @Column()
   provider: string;
