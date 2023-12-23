@@ -38,7 +38,7 @@ function CustomMap() {
           modules={['multiRouter.MultiRoute']}
           state={mapState}
           instanceRef={map}
-          onLoad={addRoute}
+          //onLoad={addRoute}
           width='100%'
           height='100vh'
           /*отключаем интерактивность меток*/

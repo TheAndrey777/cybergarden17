@@ -5,12 +5,13 @@ import Register from './pages/Register.jsx';
 import Search from './pages/Search.jsx';
 import Profile from './pages/Profile.jsx';
 import Favorites from './pages/Favorites.jsx';
+import SightBar from './components/SightBar.jsx';
 
 function App() {
   return (
     <div className='w-100% min-h-screen'>
       <Routes>
-        <Route path='/' element={<Auth />}></Route>
+        <Route path='/' element={<SightBar />}></Route>
         <Route path='auth' element={<Auth />}></Route>
         <Route path='auth/login' element={<Login />}></Route>
         <Route path='auth/register' element={<Register />}></Route>
