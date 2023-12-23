@@ -1,9 +1,9 @@
-import Auth from './pages/Auth.jsx';
+import Menu from './components/Menu.jsx';
 
 function App() {
   return (
     <div>
-      <Auth />
+      <Menu />
     </div>
   );
 }
