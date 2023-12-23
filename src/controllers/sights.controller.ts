@@ -2,11 +2,12 @@ import { validationResult } from "express-validator";
 import { Request, Response, NextFunction } from "express";
 import { ValidationException } from "../exceptions/validation.exception";
 import { NoPermissionsException } from "../exceptions/nopermissions.exception";
-import { SightAlreadyExistsException } from "../exceptions/sights.exceptions";
+import { SightAlreadyExistsException, SightNotExistsException } from "../exceptions/sights.exceptions";
 import { HttpException } from "../exceptions/http.exception";
-import { Sight } from "../entities/Sight";
 import sightService from "../services/sight.service";
 import userService from "../services/user.service";
+import reviewService from "../services/review.service";
+import { ReviewAlreadyExistsException } from "../exceptions/review.exceptions";
 
 class SightsController {
   async getSight(req: Request, res: Response, next: NextFunction) {
@@ -48,6 +49,34 @@ class SightsController {
       description: req.body.desc,
       address: req.body.addr
     });
+    res.send({
+      status: "success"
+    });
+  }
+
+  async rateSight(req: Request, res: Response, next: NextFunction) {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return next(new ValidationException);
+    }
+    
+    const review = await reviewService.findReview(Number(req.params.id), Number(req.user?.id));
+    if (review) {
+      return next(new ReviewAlreadyExistsException);
+    }
+
+    const sight = await sightService.getSight(Number(req.params.id));
+    if (!sight) {
+      return next(new SightNotExistsException);
+    }
+
+    await reviewService.createReview({
+      desc: req.body.desc,
+      grade: req.body.grade,
+      creator: await userService.findUser({ id: req.user?.id }),
+      sight: sight
+    });
+
     res.send({
       status: "success"
     });

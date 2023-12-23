@@ -16,6 +16,15 @@ sightsRouter.post(
   sightsController.createSight
 );
 
+sightsRouter.post(
+  "/:id/rate",
+  param("id").exists().isNumeric(),
+  body("desc").exists(),
+  body("grade").exists().isInt({ min: 1, max: 5 }),
+  authenticateUser,
+  sightsController.rateSight
+  );
+
 sightsRouter.get(
   "/:id",
   param("id").exists().isNumeric(),
