@@ -1,9 +1,9 @@
-import Menu from './components/Menu.jsx';
+import Review from './components/Review.jsx';
 
 function App() {
   return (
     <div>
-      <Menu />
+      <Review />
     </div>
   );
 }
