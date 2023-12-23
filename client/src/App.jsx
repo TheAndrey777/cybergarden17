@@ -1,9 +1,9 @@
-import Settings from './pages/Settings.jsx';
+import Auth from './pages/Auth.jsx';
 
 function App() {
   return (
     <>
-      <Settings />
+      <Auth />
     </>
   );
 }
