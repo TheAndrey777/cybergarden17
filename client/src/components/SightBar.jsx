@@ -1,13 +1,13 @@
 import React from 'react';
 import StarRating from './StarRating';
 import mark from '/mark-favourite.svg';
-import arrow from '/arrow-right-circle.svg';
+import SelectStar from './SelectStar';
 
 export default function SightBar() {
   const [open, setOpen] = React.useState(0);
 
   return (
-    <div className='relative w-[100%] min-h-screen px-[20px] pb-[100px] bg-slate-400'>
+    <div className='relative w-[100%] min-h-screen px-[20px] pb-[100px] '>
       <div className='h-[100%] '>
         <div className='w-[100%] h-[20px] flex justify-center items-center'>
           <div className='w-[60px] h-[1px] bg-[#4D4D4D]'></div>
@@ -53,15 +53,38 @@ export default function SightBar() {
       <div className='relative w-[100%] h-[100%] pt-[20px]'>
         {open === 0 ? (
           <>
-            <div className='text-white '></div>
+            <div className='text-white h-[300px] overflow-y-scroll overflow-x-hidden'>
+              Информация об объектеИнформация об объектеИнформация об объектеИнформация об
+              объектеИнформация об объектеИнформация об объектеИнформация об объектеИнформация об
+              объектеИнформация об объектеИнформация об объектеИнформация об объектеИнформация об
+              объектеИнформация об объектеИнформация об объектеИнформация об объекте Информация об
+              объектеИнформация об объектеИнформация обобъектеИнформация об объекте Информация об
+              объектеИнформация об объектеИнформация об
+            </div>
+            <div className='rounded-[10px] mt-[20px] flex items-center justify-center h-[50px] bg-[#126A3A]'>
+              <div className='text-[14px] font-medium text-white'>{'Продолжить маршрут'}</div>
+            </div>
           </>
         ) : (
-          <div className='text-white'>
-            <div className='w-[100%] h-20 bg-[#181818] rounded-[10px]'>
-              <div className='p-[10px]'>Оцените место</div>
-              <StarRating value={4.9} size={30} />
+          <>
+            <div className='text-white'>
+              <div className='w-[100%] h-20 bg-[#181818] rounded-[10px]'>
+                <div className='p-[10px]'>Оцените место</div>
+                <div className='w-[100%] flex justify-center'>
+                  <SelectStar value={4.9} size={30} />
+                </div>
+              </div>
             </div>
-          </div>
+
+            <textarea
+              placeholder='Поделитесь впечатлениями'
+              className='text-[14px] w-[100%] h-[200px] mt-[20px] bg-[#181818] rounded-[10px]  text-white p-[10px]'
+            ></textarea>
+
+            <div className='rounded-[10px] flex mt-[20px] items-center justify-center h-[50px] bg-[#126A3A]'>
+              <div className='text-[14px] font-medium text-white'>{'Отправить отзыв'}</div>
+            </div>
+          </>
         )}
       </div>
     </div>
