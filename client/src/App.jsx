@@ -1,9 +1,9 @@
-import ProfileHeader from './components/ProfileHeader.jsx';
+import Search from './pages/Search.jsx';
 
 function App() {
   return (
     <div>
-      <ProfileHeader />
+      <Search />
     </div>
   );
 }
