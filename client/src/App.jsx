@@ -1,12 +1,9 @@
-import Register from "./pages/Register.jsx";
-import Login from "./pages/Login.jsx";
-import Review from "./components/Review.jsx";
-import Favorites from "./pages/Favorites.jsx";
+import Settings from './pages/Settings.jsx';
 
 function App() {
   return (
     <>
-      <Favorites />
+      <Settings />
     </>
   );
 }
