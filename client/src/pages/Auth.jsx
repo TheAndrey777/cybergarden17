@@ -1,6 +1,7 @@
 import React from 'react';
 import arrow from '/arrow-left.svg';
 import CustomMap from '../components/CustomMap';
+import { Link } from 'react-router-dom';
 
 export default function Auth() {
   return (
@@ -13,14 +14,20 @@ export default function Auth() {
             <br />
             {'вход в аккаунт'}
           </div>
-          <div className='rounded-[10px] flex items-center justify-center mt-[60%] ml-[20px] mr-[20px] h-[50px] bg-[#126A3A]'>
+          <Link
+            to={'login'}
+            className='rounded-[10px] flex items-center justify-center mt-[60%] ml-[20px] mr-[20px] h-[50px] bg-[#126A3A]'
+          >
             <div className='text-[18px] font-medium text-white'>{'Вход'}</div>
-          </div>
-          <div className='rounded-[10px] flex items-center justify-center mt-[20px] ml-[20px] mr-[20px] h-[50px] bg-transparent box-border border-[1px] border-white light:border-[#0D0D0D]'>
+          </Link>
+          <Link
+            to={'register'}
+            className='rounded-[10px] flex items-center justify-center mt-[20px] ml-[20px] mr-[20px] h-[50px] bg-transparent box-border border-[1px] border-white light:border-[#0D0D0D]'
+          >
             <div className='text-[18px] font-medium text-white light:[#0D0D0D]'>
               {'Регистрация'}
             </div>
-          </div>
+          </Link>
         </div>
       </div>
 

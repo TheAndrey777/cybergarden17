@@ -3,6 +3,7 @@ import arrow from '/arrow-left.svg';
 import google from '/google.svg';
 import vk from '/vk.svg';
 import CustomMap from '../components/CustomMap';
+import { Link } from 'react-router-dom';
 
 const VALID = 'bg-[#181818] mb-[20px] pl-[15px] text-white h-[45px] w-[100%] rounded-[10px]';
 const INVALID = 'bg-[#501818] mb-[20px] pl-[15px] text-white h-[45px] w-[100%] rounded-[10px]';
@@ -49,7 +50,13 @@ export default function Login() {
     <>
       <div className='z-10 absolute top-0 left-0 md:w-[400px] w-[100%] bg-black'>
         <div className=' t-0 l-0 h-dvh w-[100%] relative'>
-          <img className='absolute top-[20px] left-[20px] text-white' src={arrow} alt='arrow'></img>
+          <Link to={'/auth'}>
+            <img
+              className='absolute top-[20px] left-[20px] text-white'
+              src={arrow}
+              alt='arrow'
+            ></img>
+          </Link>
           <div className='text-[20px] pt-[20%] text-white text-center'>{'Авторизация'}</div>
           <div className='mx-[20px] mb-[10px] text-[#4D4D4D]'>{'Почта'}</div>
           <div className='px-[20px]'>
