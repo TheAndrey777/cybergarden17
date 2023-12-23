@@ -50,7 +50,8 @@ class SightsController {
       lng: req.body.lng,
       name: req.body.name,
       description: req.body.desc,
-      address: req.body.addr
+      address: req.body.addr,
+      type: req.body.type
     });
     res.send({
       status: "success"
