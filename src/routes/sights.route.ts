@@ -12,6 +12,7 @@ sightsRouter.post(
   body("addr").exists(),
   body("lat").isNumeric(),
   body("lng").isNumeric(),
+  body("type").exists().isInt({ min: 0, max: 6 }),
   authenticateUser,
   sightsController.createSight
 );
