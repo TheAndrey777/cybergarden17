@@ -1,35 +1,51 @@
 import React from 'react';
-import { YMaps, Map } from '@pbe/react-yandex-maps';
+import { YMaps, Map, Placemark } from '@pbe/react-yandex-maps';
 
 function CustomMap() {
   const map = React.useRef(null);
+  const [used, setUsed] = React.useState(0);
   const mapState = {
-    center: [47.208735, 38.936394],
-    zoom: 10,
+    center: [47.212584, 38.916468],
+    zoom: 14,
     controls: []
   };
 
-  const addRoute = (ymaps) => {
-    const pointA = [47.208636, 38.936694]; // Москва
-    const pointB = [47.208736, 38.936674]; // Санкт-Петербург
-    const pointС = [47.200006, 38.930694]; // Санкт-Петербург
+  const types = ['museum', 'monument', 'theatre', 'gallery', 'park', 'souvenir', 'souvenir'];
 
-    const multiRoute = new ymaps.multiRouter.MultiRoute(
-      {
-        referencePoints: [pointA, pointB, pointС],
-        params: {
-          routingMode: 'pedestrian'
-        }
-      },
-      {
-        boundsAutoApply: true
-      }
-    );
+  const arr = [
+    {
+      id: 6,
+      type: 3,
+      lat: '47.216095',
+      lng: '38.928464',
+      name: 'Tes2t122',
+      description: 'cho',
+      address: 'korpus e-bat',
+      averageRating: null
+    },
+    {
+      id: 7,
+      type: 5,
+      lat: '47.206787',
+      lng: '38.931299',
+      name: 'Tes2t122',
+      description: 'cho',
+      address: 'korpus e-bat',
+      averageRating: null
+    },
+    {
+      id: 8,
+      type: 4,
+      lat: '47.199844',
+      lng: '38.895982',
+      name: 'Tes2t122',
+      description: 'cho',
+      address: 'korpus e-bat',
+      averageRating: null
+    }
+  ];
 
-    map.current.geoObjects.add(multiRoute);
-  };
-
-  React.useEffect(() => {}, [addRoute]);
+  React.useEffect(() => {});
 
   return (
     <div className='md:w-[100%] w-0  absolute top-0 left-0'>
@@ -38,14 +54,35 @@ function CustomMap() {
           modules={['multiRouter.MultiRoute']}
           state={mapState}
           instanceRef={map}
-          //onLoad={addRoute}
           width='100%'
           height='100vh'
-          /*отключаем интерактивность меток*/
           options={{
             yandexMapDisablePoiInteractivity: true
           }}
-        ></Map>
+        >
+          {arr.map((v) => {
+            return (
+              <Placemark
+                key={v.id}
+                className={v.name}
+                geometry={[v.lat, v.lng]}
+                modules={['geoObject.addon.balloon', 'geoObject.addon.hint']}
+                properties={{ hintContent: v.name }}
+                options={{
+                  iconLayout: 'default#image',
+                  iconImageHref: `/placemarks/${types[v.type]}.svg`,
+                  iconImageSize: [40, 40],
+                  iconImageOffset: [-20, -30],
+                  balloonOffset: [0, 0]
+                }}
+                onClick={() => {
+                  setUsed(v.id);
+                  console.log(used);
+                }}
+              />
+            );
+          })}
+        </Map>
       </YMaps>
     </div>
   );
