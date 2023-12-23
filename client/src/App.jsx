@@ -1,10 +1,11 @@
-import Favorites from './pages/Favorites.jsx';
-import Review from './components/Review.jsx';
+import Register from "./pages/Register.jsx";
+import Review from "./components/Review.jsx";
+import Search from "./pages/Search.jsx";
 
 function App() {
   return (
     <>
-      <Favorites />
+      <Search />
     </>
   );
 }
