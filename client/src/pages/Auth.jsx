@@ -19,14 +19,16 @@ export default function Auth() {
             {"вход в аккаунт"}
           </div>
           <Link
-            to={"auth/login"}
+            to={"/auth/login"}
             className="rounded-[10px] flex items-center justify-center mt-[60%] ml-[20px] mr-[20px] h-[50px] bg-[#126A3A]"
+            //reloadDocument={true}
           >
             <div className="text-[18px] font-medium text-white">{"Вход"}</div>
           </Link>
           <Link
-            to={"auth/register"}
+            to={"/auth/register"}
             className="rounded-[10px] flex items-center justify-center mt-[20px] ml-[20px] mr-[20px] h-[50px] bg-transparent box-border border-[1px] border-white light:border-[#0D0D0D]"
+            //reloadDocument={true}
           >
             <div className="text-[18px] font-medium text-white light:[#0D0D0D]">
               {"Регистрация"}

@@ -87,7 +87,7 @@ export default function Register() {
     <>
       <div className="z-10 absolute top-0 left-0 md:w-[400px] w-[100%] bg-black">
         <div className=" t-0 l-0 h-dvh w-[100%] relative">
-          <Link to={"/auth"}>
+          <Link to={"/auth"} reloadDocument={false}>
             <img
               className="absolute top-[20px] left-[20px] text-white light:text-black"
               src={arrow}
