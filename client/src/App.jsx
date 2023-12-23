@@ -1,9 +1,9 @@
-import Auth from './pages/Auth.jsx';
+import SightBar from './components/SightBar.jsx';
 
 function App() {
   return (
     <>
-      <Auth />
+      <SightBar />
     </>
   );
 }
