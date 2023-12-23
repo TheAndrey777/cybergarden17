@@ -17,7 +17,9 @@ export default function StarRating(props) {
       >
         <img
           src={STATES[value - i >= 1 ? 2 : Math.max(Math.ceil(value - i), 0)]}
-          onClick={() => setValue((value != i + 1) * (i + 1))}
+          onClick={
+            interactive ? () => setValue((value != i + 1) * (i + 1)) : () => {}
+          }
           alt="star"
         ></img>
       </div>
