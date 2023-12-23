@@ -36,7 +36,7 @@ class AuthController {
       username: req.body.username,
       email: req.body.email,
       provider: "jwt",
-      password: hash
+      password: hash,
     }
     const resp = await userService.createUser(newUser);
     newUser.id = resp.id;

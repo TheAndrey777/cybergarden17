@@ -8,7 +8,7 @@ export class UnauthorizedException extends HttpException {
 
 export class UserExistsException extends HttpException {
   constructor() {
-    super(200, "Пользователь уже существует");
+    super(409, "Пользователь уже существует");
   }
 }
 

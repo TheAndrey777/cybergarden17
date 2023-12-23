@@ -19,7 +19,8 @@ passport.use(
         username: profile._json.name as string,
         email: profile._json.email as string,
         provider: profile.provider,
-        id: 0
+        id: 0,
+        admin: false
       };
       
       const result = await userService.updateOrCreateUser(user);

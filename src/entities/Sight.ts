@@ -5,10 +5,10 @@ export class Sight extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column("decimal", { precision: 6, scale: 3 })
   lat: number;
 
-  @Column()
+  @Column("decimal", { precision: 6, scale: 3 })
   lng: number;
 
   @Column()
