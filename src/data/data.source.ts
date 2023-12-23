@@ -2,6 +2,9 @@ import { DataSource } from "typeorm";
 import { User } from "../entities/User";
 import { Sight } from "../entities/Sight";
 import { Review } from "../entities/Review";
+import * as dotenv from "dotenv";
+
+dotenv.config();
 
 export const dataSource = new DataSource({
   type: "postgres",

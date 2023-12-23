@@ -3,11 +3,11 @@ import { Request, Response, NextFunction } from "express";
 import { ValidationException } from "../exceptions/validation.exception";
 import { NoPermissionsException } from "../exceptions/nopermissions.exception";
 import { SightAlreadyExistsException, SightNotExistsException } from "../exceptions/sights.exceptions";
+import { ReviewAlreadyExistsException } from "../exceptions/review.exceptions";
 import { HttpException } from "../exceptions/http.exception";
 import sightService from "../services/sight.service";
 import userService from "../services/user.service";
 import reviewService from "../services/review.service";
-import { ReviewAlreadyExistsException } from "../exceptions/review.exceptions";
 
 class SightsController {
   async getSight(req: Request, res: Response, next: NextFunction) {
@@ -20,6 +20,8 @@ class SightsController {
     if (!sight) {
       return next(new HttpException(200, "Произошла ошибка"));
     }
+    const average = await reviewService.getAverageRating(sight);
+    (sight as any).averageRating = average;
     res.send({
       status: "success",
       data: sight
