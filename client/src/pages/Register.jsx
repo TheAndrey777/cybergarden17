@@ -2,7 +2,7 @@ import React from "react";
 import arrow from "/arrow-left.svg";
 import google from "/google.svg";
 import vk from "/vk.svg";
-import Sender from "../Axios/Sender";
+import Sender from "../axios/Sender";
 
 const VALID =
   "bg-[#181818] mb-[20px] pl-[15px] text-white h-[45px] w-[100%] rounded-[10px]";
