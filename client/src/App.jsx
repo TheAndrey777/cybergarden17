@@ -1,5 +1,11 @@
+import Auth from './pages/Auth.jsx';
+
 function App() {
-  return <>App page</>;
+  return (
+    <div>
+      <Auth />
+    </div>
+  );
 }
 
 export default App;
