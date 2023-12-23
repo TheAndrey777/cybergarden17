@@ -1,10 +1,14 @@
-import "./axios.min.js";
+import axios from "axios";
 
 const Sender = {
   sendPost(message) {
     console.log("send", message);
     axios
-      .post("/" + message.adress, message.message || {}, message.config || {})
+      .post(
+        "http://" + message.adress,
+        message.message || {},
+        message.config || {}
+      )
       .then((response) => {
         if (message.f) message.f(response.data);
         console.log(response.data);
@@ -17,7 +21,11 @@ const Sender = {
   sendGet(message) {
     console.log("send", message);
     axios
-      .get("/" + message.adress, message.config || {}, message.message || {})
+      .get(
+        "http://" + message.adress,
+        message.config || {},
+        message.message || {}
+      )
       .then((response) => {
         if (message.f) message.f(response.data);
         console.log(response.data);
