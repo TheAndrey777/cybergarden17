@@ -1,10 +1,10 @@
-import Search from './pages/Search.jsx';
+import Register from './pages/Register.jsx';
 import Review from './components/Review.jsx';
 
 function App() {
   return (
     <>
-      <Search />
+      <Register />
     </>
   );
 }
