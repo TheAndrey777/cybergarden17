@@ -1,11 +1,11 @@
-import Register from './pages/Register.jsx';
-import Review from './components/Review.jsx';
-import Profile from './pages/Profile.jsx';
+import Register from "./pages/Register.jsx";
+import Login from "./pages/Login.jsx";
+import Review from "./components/Review.jsx";
 
 function App() {
   return (
     <>
-      <Profile />
+      <Register />
     </>
   );
 }
