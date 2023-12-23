@@ -5,6 +5,7 @@ import cors from "cors";
 import * as dotenv from "dotenv";
 import { errorHandler } from "./middlewares/error.middleware";
 import { authRouter } from "./routes/auth.route";
+import { sightsRouter } from "./routes/sights.route";
 import "./strategies/google.strategy";
 import "./strategies/jwt.strategy";
 import "./strategies/vk.strategy";
@@ -25,6 +26,7 @@ app.get("/", (req: Request, res: Response) => {
 });
 
 app.use("/api/auth", authRouter);
+app.use("/api/sights", sightsRouter);
 
 app.use(errorHandler);
 
