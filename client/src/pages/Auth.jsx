@@ -3,7 +3,7 @@ import arrow from '/arrow-left.svg';
 
 export default function Auth() {
   return (
-    <div className=' t-0 l-0 h-dvh w-[100%] relative'>
+    <div className=' t-0 l-0 min-h-screen w-[100%] relative'>
       <img className='absolute top-[20px] left-[20px] text-white' src={arrow} alt='arrow'></img>
       <div className='text-[20px] pt-[60%] text-white text-center'>
         {'Не совершен'}
