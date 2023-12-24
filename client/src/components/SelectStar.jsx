@@ -4,7 +4,7 @@ import StarRating from './StarRating';
 export default function SelectStar() {
   return (
     <div>
-      <StarRating value={4.9} size={16} interactive={true} />
+      <StarRating value={0} size={16} interactive={true} />
     </div>
   );
 }

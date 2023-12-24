@@ -13,8 +13,18 @@ export default function Register() {
   const [reppass, setRepPass] = React.useState('');
 
   const click = () => {
-    if (pass != reppass) return;
-    axios.post({ username: name, email: email, password: pass }).then((res) => console.log(res));
+    console.log({
+      email
+    });
+
+    //if (pass != reppass) return;
+    axios
+      .post('http://10.131.56.212:8465/api/auth/register', {
+        username: 'valavs',
+        email: 'valavas@mainModule.ru',
+        password: 'asf321fawfe'
+      })
+      .then((res) => console.log(res));
   };
 
   return (
@@ -22,7 +32,7 @@ export default function Register() {
       <div className='z-10 absolute top-0 left-0 md:w-[400px] w-[100%] bg-black'>
         <div className=' t-0 l-0 h-dvh w-[100%] relative flex items-center justify-center'>
           <div className='w-[100%]'>
-            <Link to={'/auth'} reloadDocument={false}>
+            <Link to={'/auth'}>
               <img
                 className='absolute top-[20px] left-[20px] text-white light:text-black'
                 src={arrow}

@@ -28,10 +28,10 @@ export default function Search() {
 
   const menu = [
     { title: 'Музеи', icon: museum, bg: 'bg-[#EA3597]', bordercolor: 'border-[#EA3597]' },
-    { title: 'Галереи', icon: gallery, bg: 'bg-[#EA4335]', bordercolor: 'border-[#EA4335]' },
-    { title: 'Памятники', icon: ship, bg: 'bg-[#7A4FF4]', bordercolor: 'border-[#7A4FF4]' },
-    { title: 'Парки', icon: sunfog, bg: 'bg-[#35C9EA]', bordercolor: 'border-[#35C9EA]' },
-    { title: 'Театры', icon: theatre, bg: 'bg-[#54A93F]', bordercolor: 'border-[#54A93F]' },
+    { title: 'Галереи', icon: gallery, bg: 'bg-[#35C9EA]', bordercolor: 'border-[#35C9EA]' },
+    { title: 'Памятники', icon: ship, bg: 'bg-[#EA4335]', bordercolor: 'border-[#EA4335]' },
+    { title: 'Парки', icon: sunfog, bg: 'bg-[#54A93F]', bordercolor: 'border-[#54A93F]' },
+    { title: 'Театры', icon: theatre, bg: 'bg-[#7A4FF4]', bordercolor: 'border-[#7A4FF4]' },
     { title: 'Сувениры', icon: bag, bg: 'bg-[#EEA516]', bordercolor: 'border-[#EEA516]' }
   ];
 

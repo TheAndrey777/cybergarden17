@@ -7,6 +7,7 @@ import Profile from './pages/Profile.jsx';
 import Favorites from './pages/Favorites.jsx';
 import SightBar from './pages/SightBar.jsx';
 import Settings from './pages/Settings.jsx';
+import Welcome from './pages/Welcome.jsx';
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
     [&::-webkit-scrollbar-thumb]:rounded-full'
     >
       <Routes>
-        <Route path='/' element={<SightBar />}></Route>
+        <Route path='/' element={<Welcome />}></Route>
         <Route path='auth' element={<Auth />}></Route>
         <Route path='auth/login' element={<Login />}></Route>
         <Route path='auth/register' element={<Register />}></Route>
@@ -29,6 +30,7 @@ function App() {
         <Route path='favourite' element={<Favorites />}></Route>
         <Route path='settings' element={<Settings />}></Route>
         <Route path='sightbar' element={<SightBar />}></Route>
+        <Route path='welcome' element={<Welcome />}></Route>
       </Routes>
     </div>
   );
