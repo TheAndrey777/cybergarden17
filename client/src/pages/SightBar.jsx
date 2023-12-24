@@ -12,17 +12,17 @@ const Header = () => {
       </div>
       <div className='h-[180px] w-[100%] bg-white rounded-[10px] pb-[20px]'>картинка</div>
       <div className='w-[100%] relative pt-[20px]'>
-        <div className='h-[80px] w-[100%] pr-[100px] rounded-[10px] bg-[#181818] pt-[5px] px-[10px]'>
+        <div className='h-[90px] w-[100%] pr-[100px] rounded-[10px] bg-[#181818] pt-[5px] px-[10px]'>
           <div className='text-white text-nowrap text-ellipsis overflow-hidden'>
             Имя достопримечательности
           </div>
           <div className='text-[12px] text-[#4D4D4D]'>Тип</div>
-          <div className='flex'>
-            <StarRating value={4.9} size={16} />
+          <div className='flex items-center'>
+            <StarRating value={0} size={16} />
             <div className='text-white text-[12px] px-[3px]'>3.3</div>
             <div className='text-[12px] text-[#4D4D4D] text-nowrap'>12 оценок</div>
           </div>
-          <div className='absolute h-[100%] w-8 right-[30px] pt-[20px] top-0 flex justify-center'>
+          <div className='absolute h-[100%] w-8 right-[30px] pt-[20px] top-0 flex justify-center cursor-pointer'>
             <img src={mark} alt='arrow'></img>
           </div>
         </div>

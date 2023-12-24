@@ -6,6 +6,7 @@ import Search from './pages/Search.jsx';
 import Profile from './pages/Profile.jsx';
 import Favorites from './pages/Favorites.jsx';
 import SightBar from './pages/SightBar.jsx';
+import Settings from './pages/Settings.jsx';
 
 function App() {
   return (
@@ -26,6 +27,8 @@ function App() {
         <Route path='search' element={<Search />}></Route>
         <Route path='profile' element={<Profile />}></Route>
         <Route path='favourite' element={<Favorites />}></Route>
+        <Route path='settings' element={<Settings />}></Route>
+        <Route path='sightbar' element={<SightBar />}></Route>
       </Routes>
     </div>
   );
