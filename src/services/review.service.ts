@@ -19,7 +19,8 @@ class ReviewService {
   async getAverageRating(sight: Sight) {
     const repo = await dataSource.getRepository(Review);
     const average = await repo.sum("grade", { sight: { id: sight.id } });
-    return average;
+    const cnt = await repo.count({ where: { sight: { id: sight.id } } });
+    return [average, cnt];
   }
 }
 

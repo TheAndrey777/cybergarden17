@@ -17,6 +17,18 @@ sightsRouter.post(
   sightsController.createSight
 );
 
+sightsRouter.get(
+  "/all",
+  authenticateUser,
+  sightsController.getAllSights  
+);
+
+sightsRouter.get(
+  "/top",
+  authenticateUser,
+  sightsController.getTopSights
+);
+
 sightsRouter.post(
   "/:id/mark/toggle",
   param("id").exists().isNumeric(),

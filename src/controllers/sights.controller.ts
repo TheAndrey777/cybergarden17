@@ -5,12 +5,39 @@ import { NoPermissionsException } from "../exceptions/nopermissions.exception";
 import { SightAlreadyExistsException, SightNotExistsException } from "../exceptions/sights.exceptions";
 import { ReviewAlreadyExistsException } from "../exceptions/review.exceptions";
 import { HttpException } from "../exceptions/http.exception";
+import { UserNotFoundException } from "../exceptions/auth.exceptions";
 import sightService from "../services/sight.service";
 import userService from "../services/user.service";
 import reviewService from "../services/review.service";
-import { UserNotFoundException } from "../exceptions/auth.exceptions";
 
 class SightsController {
+  async getAllSights(req: Request, res: Response, next: NextFunction) {
+    const sights = await sightService.getAllSights();
+    res.send({
+      status: "success",
+      data: sights
+    });
+  }
+
+  async getTopSights(req: Request, res: Response, next: NextFunction) {
+    const sights = await sightService.getAllSights();
+    for (let i = 0; i < sights.length; i++) {
+      const [average, cnt] = await reviewService.getAverageRating(sights[i]);
+      (sights[i] as any).averageRating = average;
+      (sights[i] as any).reviewCount = cnt;
+      if (!cnt) (sights[i] as any).averageRating = 0;
+    }
+    sights.sort((l, r) => (l as any).averageRating - (r as any).averageRating);
+    const ans = [];
+    for (let i = sights.length - 1; i >= Math.max(sights.length - 5, 0); i--) {
+      ans.push(sights[i]);
+    }
+    res.send({
+      status: "success",
+      data: ans
+    });
+  }
+
   async getSight(req: Request, res: Response, next: NextFunction) {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -21,8 +48,9 @@ class SightsController {
     if (!sight) {
       return next(new HttpException(200, "Произошла ошибка"));
     }
-    const average = await reviewService.getAverageRating(sight);
+    const [average, cnt] = await reviewService.getAverageRating(sight);
     (sight as any).averageRating = average;
+    (sight as any).reviewCount = cnt;
     res.send({
       status: "success",
       data: sight

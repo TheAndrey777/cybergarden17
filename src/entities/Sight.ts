@@ -1,7 +1,7 @@
 import { BaseEntity, PrimaryGeneratedColumn, Column, Entity, OneToMany } from "typeorm";
 import { Review } from "./Review";
 
-enum SightType {
+export enum SightType {
   MUSEUM,
   MONUMENT,
   THEATRE,

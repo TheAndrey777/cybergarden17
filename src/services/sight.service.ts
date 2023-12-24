@@ -1,6 +1,10 @@
 import { Sight } from "../entities/Sight";
 
 class SightService {
+  async getAllSights() {
+    return await Sight.find();
+  }
+
   async findSight(query: any) {
     return await Sight.find({
       where: query
