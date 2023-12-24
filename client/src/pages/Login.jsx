@@ -4,8 +4,6 @@ import google from '/google.svg';
 import vk from '/vk.svg';
 import CustomMap from '../components/CustomMap';
 import { Link } from 'react-router-dom';
-import Sender from '../Axios/Sender';
-`12 `;
 
 const VALID = 'bg-[#181818] mb-[20px] pl-[15px] text-white h-[45px] w-[100%] rounded-[10px]';
 const INVALID = 'bg-[#501818] mb-[20px] pl-[15px] text-white h-[45px] w-[100%] rounded-[10px]';

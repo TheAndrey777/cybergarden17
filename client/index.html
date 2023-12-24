@@ -6,7 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cyber Garden 17</title>
   </head>
-  <body class="bg-black">
+  <body class="bg-black 
+  [&::-webkit-scrollbar]:w-1
+[&::-webkit-scrollbar-track]:bg-[#000000]
+[&::-webkit-scrollbar-thumb]:bg-gray-300
+dark:[&::-webkit-scrollbar-track]:bg-[#000000]
+dark:[&::-webkit-scrollbar-thumb]:bg-slate-500
+[&::-webkit-scrollbar-thumb]:rounded-full">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

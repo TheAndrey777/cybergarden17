@@ -40,15 +40,7 @@ export default function Search() {
   return (
     <>
       <div className='z-10 absolute top-0 left-0 md:w-[400px] w-[100%] h-[100%] bg-black'>
-        <div
-          className='t-0 l-0 h-[100%] w-[100%] overflow-y-scroll overflow-x-hidden 
-        [&::-webkit-scrollbar]:w-1
-      [&::-webkit-scrollbar-track]:bg-[#000000]
-      [&::-webkit-scrollbar-thumb]:bg-gray-300
-      dark:[&::-webkit-scrollbar-track]:bg-[#000000]
-      dark:[&::-webkit-scrollbar-thumb]:bg-slate-500
-      [&::-webkit-scrollbar-thumb]:rounded-full'
-        >
+        <div className='t-0 l-0 h-[100%] w-[100%] overflow-y-scroll overflow-x-hidden '>
           <div className='relative w-[100%] px-[20px] h-[60px] pt-[10px]'>
             <div className=' pr-[40px] h-[40px]'>
               <input
