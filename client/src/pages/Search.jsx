@@ -101,22 +101,83 @@ let load = (tag) => {
 
 export default function Search() {
   if (TEST_PLACES.length === 0) {
-    axios.get("http://10.131.56.212:8465/api/sights/all", {}).then((res) => {
-      console.log(res);
-      TEST_PLACES = [];
-      response.data.forEach((el) => {
-        TEST_PLACES.push({
-          address: el.address,
-          desk: el.description,
-          name: el.name,
-          lat: el.lat,
-          lng: el.lng,
-          value: el.reviewCount === 0 ? 0 : el.averageRating,
-          tag: TAGS[el.type - 1],
-        });
+    //axios.get("http://10.131.56.212:8465/api/sights/all", {}).then((res) => {
+    //console.log(res);
+    let response = {
+      status: "success",
+      data: [
+        {
+          id: 3,
+          picture: null,
+          type: 6,
+          lat: "14.880",
+          lng: "17.992",
+          name: "Test",
+          description: "cho",
+          address: "korpus e-bat",
+          averageRating: 5,
+          reviewCount: 1,
+        },
+        {
+          id: 3,
+          type: 6,
+          lat: "14.880",
+          lng: "17.992",
+          name: "Test",
+          description: "cho",
+          address: "korpus e-bat",
+          averageRating: NaN,
+          reviewCount: 0,
+        },
+        {
+          id: 4,
+          type: 6,
+          lat: "14.880",
+          lng: "17.992",
+          name: "Tes2t",
+          description: "cho",
+          address: "korpus e-bat",
+          averageRating: 3.47,
+          reviewCount: 1,
+        },
+        {
+          id: 5,
+          type: 6,
+          lat: "14.880",
+          lng: "17.992",
+          name: "Tes2t1",
+          description: "cho",
+          address: "korpus e-bat",
+          averageRating: 2.83,
+          reviewCount: 1,
+        },
+        {
+          id: 6,
+          type: 3,
+          lat: "14.880",
+          lng: "17.992",
+          name: "Tes2t122",
+          description: "cho",
+          address: "korpus e-bat",
+          averageRating: 4.6,
+          reviewCount: 1,
+        },
+      ],
+    };
+    TEST_PLACES = [];
+    response.data.forEach((el) => {
+      TEST_PLACES.push({
+        address: el.address,
+        desk: el.description,
+        name: el.name,
+        lat: el.lat,
+        lng: el.lng,
+        value: el.reviewCount === 0 ? 0 : el.averageRating,
+        tag: TAGS[el.type - 1],
       });
     });
   }
+  //);
 
   const arr = [
     { 1: 1 },
