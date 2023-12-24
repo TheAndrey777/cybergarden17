@@ -7,12 +7,12 @@ import gallery from "/gallery.svg";
 import sunfog from "/sun-fog.svg";
 import bag from "/bag.svg";
 import PopularPlaces from "../components/PopularPlaces";
-import CustomMap from "../components/CustomMap";
+import { CustomMap, ReloadPoints } from "../components/CustomMap";
 import axios from "axios";
 
 const TAGS = ["Музеи", "Галереи", "Памятники", "Парки", "Театры", "Сувениры"];
 
-let setPlaces1;
+let setPlaces1, setActive1, setMap1;
 
 let TEST_PLACES = [
   // { name: "Парк Петра", value: 3.7, desk: "Крутое место", tag: "Парки" },
@@ -73,13 +73,19 @@ let TEST_PLACES = [
 }
 
 */
+let prevTag = "ALL";
 
 let load = (tag) => {
+  if (tag == prevTag) {
+    tag = "ALL";
+    setActive1(-1);
+  }
   let select = [];
   for (let i = 0; i < TEST_PLACES.length; i++) TEST_PLACES[i].key = i;
   TEST_PLACES.forEach((el) => {
-    if (el.tag === tag) select.push(el);
+    if (el.tag === tag || tag === "ALL") select.push(el);
   });
+  prevTag = tag;
 
   setPlaces1(
     <div>
@@ -97,6 +103,7 @@ let load = (tag) => {
       })}
     </div>
   );
+  ReloadPoints(select);
 };
 
 export default function Search() {
@@ -110,8 +117,8 @@ export default function Search() {
           id: 3,
           picture: null,
           type: 6,
-          lat: "14.880",
-          lng: "17.992",
+          lat: parseFloat("14.880"),
+          lng: parseFloat("17.992"),
           name: "Test",
           description: "cho",
           address: "korpus e-bat",
@@ -121,8 +128,8 @@ export default function Search() {
         {
           id: 3,
           type: 6,
-          lat: "14.880",
-          lng: "17.992",
+          lat: parseFloat("14.880"),
+          lng: parseFloat("17.992"),
           name: "Test",
           description: "cho",
           address: "korpus e-bat",
@@ -132,8 +139,8 @@ export default function Search() {
         {
           id: 4,
           type: 6,
-          lat: "14.880",
-          lng: "17.992",
+          lat: parseFloat("14.880"),
+          lng: parseFloat("17.992"),
           name: "Tes2t",
           description: "cho",
           address: "korpus e-bat",
@@ -143,8 +150,8 @@ export default function Search() {
         {
           id: 5,
           type: 6,
-          lat: "14.880",
-          lng: "17.992",
+          lat: parseFloat("14.880"),
+          lng: parseFloat("17.992"),
           name: "Tes2t1",
           description: "cho",
           address: "korpus e-bat",
@@ -154,8 +161,8 @@ export default function Search() {
         {
           id: 6,
           type: 3,
-          lat: "14.880",
-          lng: "17.992",
+          lat: parseFloat("14.880"),
+          lng: parseFloat("17.992"),
           name: "Tes2t122",
           description: "cho",
           address: "korpus e-bat",
@@ -177,6 +184,9 @@ export default function Search() {
       });
     });
   }
+
+  const [map, setMap] = React.useState(<CustomMap arr={TEST_PLACES} />);
+  setMap1 = setMap;
   //);
 
   const arr = [
@@ -235,6 +245,7 @@ export default function Search() {
   ];
 
   const [active, setActive] = React.useState(0);
+  setActive1 = setActive;
 
   {
     /* <div>
@@ -311,7 +322,8 @@ export default function Search() {
           <li>{places}</li>
         </div>
       </div>
-      <CustomMap />
+      {map}
+      {/* <CustomMap arr={TEST_PLACES} /> */}
     </>
   );
 }
