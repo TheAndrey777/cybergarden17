@@ -48,7 +48,7 @@ function CustomMap() {
   React.useEffect(() => {});
 
   return (
-    <div className='md:w-[100%] w-0  absolute top-0 left-0'>
+    <div className='w-[100%]  absolute top-0 left-0'>
       <YMaps query={{ apikey: 'b3e4c6b7-fc59-4a74-98b1-141c0f815ad6' }}>
         <Map
           modules={['multiRouter.MultiRoute']}

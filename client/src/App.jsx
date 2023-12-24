@@ -18,7 +18,8 @@ function App() {
     [&::-webkit-scrollbar-thumb]:bg-gray-300
     dark:[&::-webkit-scrollbar-track]:bg-[#000000]
     dark:[&::-webkit-scrollbar-thumb]:bg-slate-500
-    [&::-webkit-scrollbar-thumb]:rounded-full'
+    [&::-webkit-scrollbar-thumb]:rounded-full
+    overflow-hidden'
     >
       <Routes>
         <Route path='/' element={<Welcome />}></Route>
