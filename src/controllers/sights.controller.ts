@@ -13,6 +13,11 @@ import reviewService from "../services/review.service";
 class SightsController {
   async getAllSights(req: Request, res: Response, next: NextFunction) {
     const sights = await sightService.getAllSights();
+    for (let i = 0; i < sights.length; i++) {
+      const [average, cnt] = await reviewService.getAverageRating(sights[i]);
+      (sights[i] as any).averageRating = average;
+      (sights[i] as any).reviewCount = cnt;
+    }
     res.send({
       status: "success",
       data: sights
