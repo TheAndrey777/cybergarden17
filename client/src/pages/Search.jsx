@@ -40,7 +40,15 @@ export default function Search() {
   return (
     <>
       <div className='z-10 absolute top-0 left-0 md:w-[400px] w-[100%] h-[100%] bg-black'>
-        <div className='t-0 l-0 h-[100%] w-[100%] overflow-y-scroll overflow-x-hidden'>
+        <div
+          className='t-0 l-0 h-[100%] w-[100%] overflow-y-scroll overflow-x-hidden 
+        [&::-webkit-scrollbar]:w-1
+      [&::-webkit-scrollbar-track]:bg-[#000000]
+      [&::-webkit-scrollbar-thumb]:bg-gray-300
+      dark:[&::-webkit-scrollbar-track]:bg-[#000000]
+      dark:[&::-webkit-scrollbar-thumb]:bg-slate-500
+      [&::-webkit-scrollbar-thumb]:rounded-full'
+        >
           <div className='relative w-[100%] px-[20px] h-[60px] pt-[10px]'>
             <div className=' pr-[40px] h-[40px]'>
               <input
@@ -49,7 +57,7 @@ export default function Search() {
                 className='bg-[#181818] text-white light:[#EBEBEB] h-[40px] w-[100%] rounded-[10px] text-[15px] pl-[10px] text-ellipsis overflow-hidden'
               ></input>
             </div>
-            <div className='absolute h-[100%] w-[32px] light:[#0D0D0D] flex justify-center items-center bg-slate-500w-[100px] top-0 right-0'>
+            <div className='absolute h-[100%] w-[32px] light:[#0D0D0D] flex justify-center items-center bg-slate-500w-[100px] top-0 right-0 cursor-pointer'>
               <img src={close} alt='close' className='absolute right-[20px]'></img>
             </div>
           </div>
