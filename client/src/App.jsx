@@ -8,6 +8,7 @@ import Favorites from './pages/Favorites.jsx';
 import SightBar from './pages/SightBar.jsx';
 import Settings from './pages/Settings.jsx';
 import Welcome from './pages/Welcome.jsx';
+import Achievements from './pages/Achievements.jsx';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Route path='settings' element={<Settings />}></Route>
         <Route path='sightbar' element={<SightBar />}></Route>
         <Route path='welcome' element={<Welcome />}></Route>
+        <Route path='achievements' element={<Achievements />}></Route>
       </Routes>
     </div>
   );

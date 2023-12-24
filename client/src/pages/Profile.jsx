@@ -3,18 +3,19 @@ import ProfileHeader from '../components/ProfileHeader';
 import Review from '../components/Review';
 import arrow from '/arrow-right-mark.svg';
 import CustomMap from '../components/CustomMap';
+import NavBar from '../components/NavBar';
 
 export default function Profile(props) {
-  4;
   const arr = [{}, {}, {}, {}, {}];
   return (
     <>
-      <div className='z-10 absolute top-0 left-0 md:w-[400px] h-[100%] w-[100%] bg-black'>
+      <div className='z-10 absolute top-0 left-0 md:w-[400px] h-[100%] w-[100%] pb-[100px] bg-black'>
+        <NavBar />{' '}
         <div className='t-0 l-0 h-[100%] w-[100%] overflow-y-scroll overflow-x-hidden'>
           <ProfileHeader />
 
           {props.arr === undefined || props.arr.length === 0 ? (
-            <div className='h-[100%] w-[100%]'>
+            <div className=' w-[100%]'>
               <div className='pt-[30%]'>
                 <div>
                   <div className='text-white text-[15px] mb-[10px] text-center'>
