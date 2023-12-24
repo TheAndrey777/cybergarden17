@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import * as dotenv from "dotenv";
+import * as path from "path";
 import { errorHandler } from "./middlewares/error.middleware";
 import { authRouter } from "./routes/auth.route";
 import { sightsRouter } from "./routes/sights.route";
@@ -19,16 +20,15 @@ app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.get("/", (req: Request, res: Response) => {
-  res.send({
-    status: "ok"
-  });
-});
-
 app.use("/api/auth", authRouter);
 app.use("/api/sights", sightsRouter);
 
 app.use("/img", express.static("src/images"));
+app.use(express.static(path.join(__dirname, '../client/dist')));
+
+app.all('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+});
 
 app.use(errorHandler);
 
