@@ -62,7 +62,12 @@ export default function Register() {
         email: email,
         password: pass
       })
-      .then((res) => console.log(res));
+      .then((res) => {
+        console.log(res);
+        axios.get('http://10.131.56.212:8465/api/auth/me').then((res) => {
+          <Navigate to={'/profile'} />;
+        });
+      });
   };
 
   return (

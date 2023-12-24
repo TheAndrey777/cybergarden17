@@ -3,9 +3,9 @@ import menu from '/menu2.svg';
 
 export default function SearchAttraction() {
   return (
-    <div className='absolute px-[20px] w-[100%] h-[50px]'>
-      <div className='w-[100px] h-[50px] bg-black'>
-        <div className='relative w-[100%] px-[20px] h-[60px] pt-[10px]'>
+    <div className='md:hidden absolute px-[20px] w-[100%] h-[50px]'>
+      <div className='w-[100%] h-[50px] bg-black'>
+        <div className='relative w-[100%] px-[20px] h-[60px] pt-[10px] '>
           <div className=' pr-[40px] h-[40px]'>
             <input
               type='text'

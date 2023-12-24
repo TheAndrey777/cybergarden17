@@ -313,7 +313,7 @@ export default function Search() {
       </div>
       {map}
       {/* <CustomMap arr={TEST_PLACES} /> */}
-      <MapBar />
+      <MapBar page={4} />
     </>
   );
 }

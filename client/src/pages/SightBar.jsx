@@ -94,9 +94,6 @@ dark:[&::-webkit-scrollbar-thumb]:bg-slate-500
                   Информацияоб объекте Информацияоб объекте Информацияоб объекте Информацияоб
                   объекте Информацияоб объекте Информация
                 </div>
-                <div className='rounded-[10px] mt-[20px] flex items-center justify-center h-[50px] bg-[#126A3A]'>
-                  <div className='text-[14px] font-medium text-white'>{'Продолжить маршрут'}</div>
-                </div>
               </>
             ) : (
               <>

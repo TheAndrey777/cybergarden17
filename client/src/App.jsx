@@ -9,6 +9,8 @@ import SightBar from './pages/SightBar.jsx';
 import Settings from './pages/Settings.jsx';
 import Welcome from './pages/Welcome.jsx';
 import Achievements from './pages/Achievements.jsx';
+import SearchAttraction from './components/SearchAttraction.jsx';
+import axios from 'axios';
 
 function App() {
   return (
@@ -23,7 +25,7 @@ function App() {
     overflow-hidden'
     >
       <Routes>
-        <Route path='/' element={<Welcome />}></Route>
+        <Route path='/' element={<SearchAttraction />}></Route>
         <Route path='auth' element={<Auth />}></Route>
         <Route path='auth/login' element={<Login />}></Route>
         <Route path='auth/register' element={<Register />}></Route>

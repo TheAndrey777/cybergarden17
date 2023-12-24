@@ -7,6 +7,8 @@ import mark from '/mark.svg';
 import marka from '/save-active.svg';
 import profile from '/profile-circle.svg';
 import profilea from '/profile.svg';
+import search from '/search.svg';
+import searcha from '/search-active.svg';
 import { Link } from 'react-router-dom';
 
 export default function MapBar(props) {
@@ -50,6 +52,16 @@ export default function MapBar(props) {
           >
             <img
               src={props.page === 3 ? profilea : profile}
+              alt='profile'
+              className='h-[32px] w-[32px] light:text-black'
+            ></img>
+          </Link>
+          <Link
+            to='/search'
+            className={`mt-[5px] box-border flex h-[50px] w-[50px] items-center justify-center bg-[#181818] light:bg-[#EBEBEB] rounded-[10px]`}
+          >
+            <img
+              src={props.page === 4 ? searcha : search}
               alt='profile'
               className='h-[32px] w-[32px] light:text-black'
             ></img>
