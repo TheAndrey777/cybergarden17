@@ -7,7 +7,7 @@ import gallery from "/gallery.svg";
 import sunfog from "/sun-fog.svg";
 import bag from "/bag.svg";
 import PopularPlaces from "../components/PopularPlaces";
-import { CustomMap, ReloadPoints } from "../components/CustomMap";
+import CustomMap from "../components/CustomMap";
 import axios from "axios";
 
 const TAGS = ["Музеи", "Галереи", "Памятники", "Парки", "Театры", "Сувениры"];

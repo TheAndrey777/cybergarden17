@@ -1,40 +1,11 @@
 import React from "react";
 import { YMaps, Map, Placemark } from "@pbe/react-yandex-maps";
+import axios from "axios";
 
-let setPoints1;
-
-export function ReloadPoints(arr) {
-  console.log(arr);
-  setPoints1(
-    <div>
-      {arr.map((v, i) => {
-        return (
-          <Placemark
-            key={i}
-            className={v.name}
-            geometry={[v.lat, v.lng]}
-            modules={["geoObject.addon.balloon", "geoObject.addon.hint"]}
-            properties={{ hintContent: v.name }}
-            options={{
-              iconLayout: "default#image",
-              iconImageHref: "/placemarks/${types[v.type]}.svg",
-              iconImageSize: [40, 40],
-              iconImageOffset: [-20, -30],
-              balloonOffset: [0, 0],
-            }}
-            onClick={() => {
-              setUsed(v.id);
-              console.log(used);
-            }}
-          />
-        );
-      })}
-    </div>
-  );
-}
-export function CustomMap(props) {
+export default function CustomMap(props) {
   const map = React.useRef(null);
   const [used, setUsed] = React.useState(0);
+  const [markers, setMarkers] = React.useState([]);
   const mapState = {
     center: [47.212584, 38.916468],
     zoom: 14,
@@ -48,10 +19,9 @@ export function CustomMap(props) {
     "gallery",
     "park",
     "souvenir",
+    "souvenir",
   ];
 
-  const [points, setPoints] = React.useState(<></>);
-  setPoints1 = setPoints;
   // [
   //   {
   //     id: 6,
@@ -85,7 +55,15 @@ export function CustomMap(props) {
   //   },
   // ];
 
-  React.useEffect(() => {});
+  React.useEffect(() => {
+    axios.get("http://10.131.56.212:8465/api/sights/all", { withCredentials: true })
+      .then((res) => {
+        setMarkers(res.data.data);
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  }, []);
 
   return (
     <div className="w-[100%]  absolute top-0 left-0">
@@ -100,7 +78,28 @@ export function CustomMap(props) {
             yandexMapDisablePoiInteractivity: true,
           }}
         >
-          <> {points}</>
+          {markers.map((v) => {
+            return (
+              <Placemark
+                key={v.id}
+                className={v.name}
+                geometry={[v.lat, v.lng]}
+                modules={['geoObject.addon.balloon', 'geoObject.addon.hint']}
+                properties={{ hintContent: v.name }}
+                options={{
+                  iconLayout: 'default#image',
+                  iconImageHref: `/placemarks/${types[v.type]}.svg`,
+                  iconImageSize: [40, 40],
+                  iconImageOffset: [-20, -30],
+                  balloonOffset: [0, 0]
+                }}
+                onClick={() => {
+                  setUsed(v.id);
+                  console.log(used);
+                }}
+              />
+            );
+          })}
         </Map>
       </YMaps>
     </div>

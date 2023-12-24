@@ -24,11 +24,11 @@ app.use("/api/auth", authRouter);
 app.use("/api/sights", sightsRouter);
 
 app.use("/img", express.static("src/images"));
-app.use(express.static(path.join(__dirname, '../client/dist')));
+// app.use(express.static(path.join(__dirname, '../client/dist')));
 
-app.all('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/dist/index.html'));
-});
+// app.all('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+// });
 
 app.use(errorHandler);
 
