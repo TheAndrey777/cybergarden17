@@ -8,6 +8,7 @@ import sunfog from "/sun-fog.svg";
 import bag from "/bag.svg";
 import PopularPlaces from "../components/PopularPlaces";
 import CustomMap from "../components/CustomMap";
+import axios from "axios";
 
 let setPlaces1;
 
@@ -52,6 +53,11 @@ let load = (tag) => {
 };
 
 export default function Search() {
+  if (TEST_PLACES.length === 0 || true)
+    axios
+      .get("http://10.131.56.212:8465/api/sights/all", {})
+      .then((res) => console.log(res));
+
   const arr = [
     { 1: 1 },
     { 1: 1 },
