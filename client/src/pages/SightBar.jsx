@@ -4,6 +4,7 @@ import mark from '/mark-favourite.svg';
 import SelectStar from '../components/SelectStar';
 import CustomMap from '../components/CustomMap';
 import NavBar from '../components/NavBar';
+import MapBar from '../components/MapBar';
 
 const Header = (props) => {
   return (
@@ -123,6 +124,7 @@ dark:[&::-webkit-scrollbar-thumb]:bg-slate-500
       </div>
       <CustomMap />
       <NavBar page={0} />
+      <MapBar />
     </>
   );
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import close from '/close-circle.svg';
 import edit from '/edit.svg';
 import CustomMap from '../components/CustomMap';
+import MapBar from '../components/MapBar';
 
 export default function Settings() {
   return (
@@ -47,6 +48,7 @@ export default function Settings() {
         </div>
       </div>
       <CustomMap />
+      <MapBar />
     </>
   );
 }

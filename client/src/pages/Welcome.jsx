@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 export default function Welcome() {
   return (
     <>
-      <div className='z-10 absolute top-0 left-0 h-[100%] w-[100%] bg-black flex items-center'>
+      <div className='z-10 absolute top-0 left-0 h-[100%] w-[100%] bg-black flex items-center justify-center'>
         <div>
           <img src={picture} alt='picture' className='w-[100%] '></img>
           <div className='text-[16px] text-white text-center my-[20px]'>

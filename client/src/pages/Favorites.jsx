@@ -3,6 +3,7 @@ import PopularPlaces from '../components/PopularPlaces';
 import arrow from '/arrow-right-mark.svg';
 import CustomMap from '../components/CustomMap';
 import NavBar from '../components/NavBar';
+import MapBar from '../components/MapBar';
 
 export default function Favorites() {
   const arr = [
@@ -59,6 +60,7 @@ export default function Favorites() {
         <NavBar page={1} />
       </div>
       <CustomMap />
+      <MapBar />
     </>
   );
 }
