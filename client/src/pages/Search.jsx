@@ -76,15 +76,17 @@ let TEST_PLACES = [
 */
 let prevTag = "ALL";
 
-let load = (tag) => {
+let load = (tag, active) => {
   if (tag == prevTag) {
     tag = "ALL";
     setActive1(-1);
   }
   let select = [];
+  let key = document.getElementById("search").value;
   for (let i = 0; i < TEST_PLACES.length; i++) TEST_PLACES[i].key = i;
   TEST_PLACES.forEach((el) => {
-    if (el.tag === tag || tag === "ALL") select.push(el);
+    if ((el.tag === tag || tag === "ALL") && el.name.startsWith(key, 0))
+      select.push(el);
   });
   prevTag = tag;
 
@@ -104,22 +106,22 @@ let load = (tag) => {
       })}
     </div>
   );
-  ReloadPoints(select);
+  //ReloadPoints(select);
 };
 
 export default function Search() {
   if (TEST_PLACES.length === 0) {
     //axios.get("http://10.131.56.212:8465/api/sights/all", {}).then((res) => {
     //console.log(res);
-    let response = {
+    let res = {
       status: "success",
       data: [
         {
           id: 3,
           picture: null,
           type: 6,
-          lat: parseFloat("14.880"),
-          lng: parseFloat("17.992"),
+          lat: "14.880",
+          lng: "17.992",
           name: "Test",
           description: "cho",
           address: "korpus e-bat",
@@ -127,43 +129,40 @@ export default function Search() {
           reviewCount: 1,
         },
         {
-          id: 3,
-          type: 6,
-          lat: parseFloat("14.880"),
-          lng: parseFloat("17.992"),
-          name: "Test",
-          description: "cho",
-          address: "korpus e-bat",
-          averageRating: NaN,
-          reviewCount: 0,
-        },
-        {
-          id: 4,
-          type: 6,
-          lat: parseFloat("14.880"),
-          lng: parseFloat("17.992"),
-          name: "Tes2t",
+          id: 6,
+          type: 3,
+          lat: "47.216095",
+          lng: "38.928464",
+          name: "Tes2t122",
           description: "cho",
           address: "korpus e-bat",
           averageRating: 3.47,
-          reviewCount: 1,
         },
         {
-          id: 5,
-          type: 6,
-          lat: parseFloat("14.880"),
-          lng: parseFloat("17.992"),
-          name: "Tes2t1",
+          id: 7,
+          type: 5,
+          lat: "47.206787",
+          lng: "38.931299",
+          name: "Tes2t122",
           description: "cho",
           address: "korpus e-bat",
-          averageRating: 2.83,
-          reviewCount: 1,
+          averageRating: 4,
+        },
+        {
+          id: 8,
+          type: 4,
+          lat: "47.199844",
+          lng: "38.895982",
+          name: "Tes2t122",
+          description: "cho",
+          address: "korpus e-bat",
+          averageRating: 0,
         },
         {
           id: 6,
           type: 3,
-          lat: parseFloat("14.880"),
-          lng: parseFloat("17.992"),
+          lat: "47.199844",
+          lng: "38.895986",
           name: "Tes2t122",
           description: "cho",
           address: "korpus e-bat",
@@ -173,7 +172,7 @@ export default function Search() {
       ],
     };
     TEST_PLACES = [];
-    response.data.forEach((el) => {
+    res.data.forEach((el) => {
       TEST_PLACES.push({
         address: el.address,
         desk: el.description,
@@ -184,9 +183,11 @@ export default function Search() {
         tag: TAGS[el.type - 1],
       });
     });
-  }
+  } //);
 
-  const [map, setMap] = React.useState(<CustomMap arr={TEST_PLACES} />);
+  const [map, setMap] = React.useState(
+    <CustomMap markers={TEST_PLACES} type={1} />
+  );
   setMap1 = setMap;
   //);
 
@@ -273,6 +274,7 @@ export default function Search() {
           <div className="relative w-[100%] px-[20px] h-[60px] pt-[10px]">
             <div className=" pr-[40px] h-[40px]">
               <input
+                id="search"
                 type="text"
                 placeholder="Поиск достопримечательностей"
                 className="bg-[#181818] text-white light:[#EBEBEB] h-[40px] w-[100%] rounded-[10px] text-[15px] pl-[10px] text-ellipsis overflow-hidden"
@@ -282,6 +284,7 @@ export default function Search() {
               <img
                 src={close}
                 alt="close"
+                onClick={() => (document.getElementById("search").value = "")}
                 className="absolute right-[20px]"
               ></img>
             </div>
@@ -296,7 +299,7 @@ export default function Search() {
                   key={i}
                   onClick={() => {
                     setActive(i);
-                    load(TAGS[i]);
+                    load(TAGS[i], active);
                   }}
                   className="h-[120px] w-[80px] relative light:bg-[#EBEBEB] cursor-pointer"
                 >
@@ -325,7 +328,7 @@ export default function Search() {
       </div>
       {map}
       {/* <CustomMap arr={TEST_PLACES} /> */}
-      <MapBar page={4} />
+      <MapBar />
     </>
   );
 }
