@@ -5,7 +5,7 @@ import Register from './pages/Register.jsx';
 import Search from './pages/Search.jsx';
 import Profile from './pages/Profile.jsx';
 import Favorites from './pages/Favorites.jsx';
-import SightBar from './components/SightBar.jsx';
+import SightBar from './pages/SightBar.jsx';
 
 function App() {
   return (
