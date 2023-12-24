@@ -5,6 +5,8 @@ import SelectStar from '../components/SelectStar';
 import CustomMap from '../components/CustomMap';
 import NavBar from '../components/NavBar';
 import MapBar from '../components/MapBar';
+import { useLocation } from 'react-router-dom';
+import axios from 'axios';
 
 const Header = (props) => {
   return (
@@ -17,17 +19,17 @@ const Header = (props) => {
           }}
         ></div>
       </div>
-      <div className='h-[180px] w-[100%] bg-white rounded-[10px] pb-[20px]'>картинка</div>
+      <div className='h-[180px] w-[100%] bg-white rounded-[10px] pb-[20px]'><img src={props.simg} alt="" /></div>
       <div className='w-[100%] relative pt-[20px]'>
         <div className='h-[90px] w-[100%] pr-[100px] rounded-[10px] bg-[#181818] pt-[5px] px-[10px]'>
           <div className='text-white text-nowrap text-ellipsis overflow-hidden'>
-            Имя достопримечательности
+            {props.sightName}
           </div>
           <div className='text-[12px] text-[#4D4D4D]'>Тип</div>
           <div className='flex items-center'>
             <StarRating value={0} size={16} />
-            <div className='text-white text-[12px] px-[3px]'>3.3</div>
-            <div className='text-[12px] text-[#4D4D4D] text-nowrap'>12 оценок</div>
+            <div className='text-white text-[12px] px-[3px]'>{props.avg}</div>
+            <div className='text-[12px] text-[#4D4D4D] text-nowrap'>{props.cnt}</div>
           </div>
           <div className='absolute h-[100%] w-8 right-[30px] pt-[20px] top-0 flex justify-center cursor-pointer'>
             <img src={mark} alt='arrow'></img>
@@ -61,9 +63,27 @@ const ButtonMenu = (props) => {
   );
 };
 
-export default function SightBar() {
+export default function SightBar(props) {
   const [height, setHeight] = React.useState(1);
   const [open, setOpen] = React.useState(0);
+  const location = useLocation();
+  console.log(location.state.id);
+  const [sight, setSight] = React.useState({});
+  
+  
+  React.useEffect(() => {
+    axios.get(`http://10.131.56.212:8465/api/sights/${location.state.id}`, { withCredentials: true })
+      .then((res) => {
+        console.log(res.data.data);
+        setSight(res.data.data);
+        if (sight.picture == null)
+          sight.picture = "https://extrasvyaz.ru/upload/iblock/867/ed2hp485p3dtmzqj8biva59uuforqqjj.jpg";
+        console.log(sight.picture);
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  }, []);
 
   return (
     <>
@@ -81,18 +101,13 @@ dark:[&::-webkit-scrollbar-track]:bg-[#000000]
 dark:[&::-webkit-scrollbar-thumb]:bg-slate-500
 [&::-webkit-scrollbar-thumb]:rounded-full`}
         >
-          <Header setHeight={setHeight} height={height} />
+          <Header setHeight={setHeight} height={height} sightName={sight.name} avg={sight.averageRating} cnt={sight.reviewCount} simg={sight.picture} />
           <ButtonMenu setOpen={setOpen} open={open} />
           <div className='pt-[20px]'>
             {open === 0 ? (
               <>
                 <div className='text-white'>
-                  Информация об объектеИнформация об объектеИнформация об объектеИнформация об
-                  объектеИнформация об объекте Информация об объекте Информацияоб объекте
-                  Информацияоб объекте Информацияоб объекте Информацияоб объекте Информацияоб
-                  объекте Информацияоб объекте Информацияоб объекте Информацияоб объекте
-                  Информацияоб объекте Информацияоб объекте Информацияоб объекте Информацияоб
-                  объекте Информацияоб объекте Информация
+                  {sight.description}
                 </div>
               </>
             ) : (

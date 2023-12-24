@@ -1,6 +1,9 @@
 import React from "react";
 import { YMaps, Map, Placemark } from "@pbe/react-yandex-maps";
+import SightBar from "../pages/SightBar";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 export default function CustomMap(props) {
   const map = React.useRef(null);
@@ -11,7 +14,7 @@ export default function CustomMap(props) {
     zoom: 14,
     controls: [],
   };
-
+  const navigate = useNavigate();
   const types = [
     "museum",
     "monument",
@@ -63,6 +66,7 @@ export default function CustomMap(props) {
                 onClick={() => {
                   setUsed(v.id);
                   console.log(used);
+                  navigate('/sightbar', { state: { id: v.id } } );
                 }}
               />
             );
