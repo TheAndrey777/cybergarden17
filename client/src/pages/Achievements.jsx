@@ -38,7 +38,7 @@ export default function Achievements() {
           <NavBar page={2} />
         </div>
       </div>
-      <MapBar />
+      <MapBar page={2} />
       <CustomMap />
     </>
   );

@@ -60,7 +60,7 @@ export default function Favorites() {
         <NavBar page={1} />
       </div>
       <CustomMap />
-      <MapBar />
+      <MapBar page={1} />
     </>
   );
 }

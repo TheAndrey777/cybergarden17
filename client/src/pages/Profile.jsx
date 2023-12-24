@@ -49,7 +49,7 @@ export default function Profile(props) {
         </div>
       </div>
       <CustomMap />
-      <MapBar />
+      <MapBar page={3} />
     </>
   );
 }

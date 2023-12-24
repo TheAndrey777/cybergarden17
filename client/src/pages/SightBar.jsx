@@ -124,7 +124,7 @@ dark:[&::-webkit-scrollbar-thumb]:bg-slate-500
       </div>
       <CustomMap />
       <NavBar page={0} />
-      <MapBar />
+      <MapBar page={0} />
     </>
   );
 }
