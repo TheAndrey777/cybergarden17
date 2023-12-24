@@ -6,7 +6,7 @@ import starHalf from "/half-star.svg";
 const STATES = [starEmpty, starHalf, starBold];
 
 export default function StarRating(props) {
-  const [value, setValue] = React.useState(props.value);
+  const [value, setValue] = React.useState(props.value || 0);
   const stars = [];
   for (let i = 0; i < 5; i++) {
     stars.push(
