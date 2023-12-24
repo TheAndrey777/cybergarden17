@@ -2,6 +2,7 @@ import React from 'react';
 import PopularPlaces from '../components/PopularPlaces';
 import arrow from '/arrow-right-mark.svg';
 import CustomMap from '../components/CustomMap';
+import NavBar from '../components/NavBar';
 
 export default function Favorites() {
   const arr = [
@@ -21,7 +22,7 @@ export default function Favorites() {
   ];
   return (
     <>
-      <div className='z-10 absolute top-0 left-0 md:w-[400px] h-[100%] w-[100%] bg-black'>
+      <div className='z-10 absolute top-0 left-0 md:w-[400px] h-[100%] w-[100%] pb-[100px] bg-black'>
         <div
           className='t-0 l-0 h-[100%] w-[100%] overflow-y-scroll overflow-x-hidden
       [&::-webkit-scrollbar]:w-1
@@ -55,6 +56,7 @@ export default function Favorites() {
             </div>
           )}
         </div>
+        <NavBar page={1} />
       </div>
       <CustomMap />
     </>

@@ -10,7 +10,7 @@ export default function Profile(props) {
   return (
     <>
       <div className='z-10 absolute top-0 left-0 md:w-[400px] h-[100%] w-[100%] pb-[100px] bg-black'>
-        <NavBar />{' '}
+        <NavBar page={3} />{' '}
         <div className='t-0 l-0 h-[100%] w-[100%] overflow-y-scroll overflow-x-hidden'>
           <ProfileHeader />
 

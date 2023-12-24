@@ -4,7 +4,7 @@ import NavBar from '../components/NavBar';
 
 export default function Achievements() {
   return (
-    <div className='z-10 absolute h-[100%] top-0 left-0 md:w-[400px] w-[100%] bg-black'>
+    <div className='z-10 absolute h-[100%] top-0 left-0 md:w-[400px] w-[100%] pb-[100px] bg-black'>
       <div
         className='h-[100%] overflow-y-scroll overflow-x-hidden 
     [&::-webkit-scrollbar]:w-1
@@ -18,8 +18,7 @@ export default function Achievements() {
         <Atchivment name='С моим мнением считаются' description='Напишите 20 отзывов' complet={1} />
         <Atchivment name='С моим мнением считаются' description='Напишите 20 отзывов' complet={1} />
         <Atchivment name='С моим мнением считаются' description='Напишите 20 отзывов' complet={1} />
-        <Atchivment name='С моим мнением считаются' description='Напишите 20 отзывов' complet={1} />
-        <NavBar />
+        <NavBar page={2} />
       </div>
     </div>
   );
