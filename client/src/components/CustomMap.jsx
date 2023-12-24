@@ -22,39 +22,6 @@ export default function CustomMap(props) {
     "souvenir",
   ];
 
-  // [
-  //   {
-  //     id: 6,
-  //     type: 3,
-  //     lat: "47.216095",
-  //     lng: "38.928464",
-  //     name: "Tes2t122",
-  //     description: "cho",
-  //     address: "korpus e-bat",
-  //     averageRating: 3.47,
-  //   },
-  //   {
-  //     id: 7,
-  //     type: 5,
-  //     lat: "47.206787",
-  //     lng: "38.931299",
-  //     name: "Tes2t122",
-  //     description: "cho",
-  //     address: "korpus e-bat",
-  //     averageRating: 4,
-  //   },
-  //   {
-  //     id: 8,
-  //     type: 4,
-  //     lat: "47.199844",
-  //     lng: "38.895982",
-  //     name: "Tes2t122",
-  //     description: "cho",
-  //     address: "korpus e-bat",
-  //     averageRating: 0,
-  //   },
-  // ];
-
   React.useEffect(() => {
     axios.get("http://10.131.56.212:8465/api/sights/all", { withCredentials: true })
       .then((res) => {

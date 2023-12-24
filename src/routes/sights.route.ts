@@ -19,13 +19,11 @@ sightsRouter.post(
 
 sightsRouter.get(
   "/all",
-  authenticateUser,
   sightsController.getAllSights  
 );
 
 sightsRouter.get(
   "/top",
-  authenticateUser,
   sightsController.getTopSights
 );
 
