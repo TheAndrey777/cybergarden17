@@ -28,6 +28,8 @@ app.get("/", (req: Request, res: Response) => {
 app.use("/api/auth", authRouter);
 app.use("/api/sights", sightsRouter);
 
+app.use("/img", express.static("src/images"));
+
 app.use(errorHandler);
 
 export default app;

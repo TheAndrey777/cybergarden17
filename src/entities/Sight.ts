@@ -16,6 +16,9 @@ export class Sight extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
+  @Column({ nullable: true })
+  picture: string;
+
   @Column({
     type: "enum",
     enum: SightType,
