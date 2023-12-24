@@ -10,22 +10,69 @@ import PopularPlaces from "../components/PopularPlaces";
 import CustomMap from "../components/CustomMap";
 import axios from "axios";
 
+const TAGS = ["Музеи", "Галереи", "Памятники", "Парки", "Театры", "Сувениры"];
+
 let setPlaces1;
 
-const TEST_PLACES = [
-  { name: "Парк Петра", value: 3.7, desk: "Крутое место", tag: "Парки" },
-  { name: "Парк Гоголя", value: 2.2, desk: "Крутое место", tag: "Парки" },
-  { name: "Парк Гоголя", value: 2.2, desk: "Крутое место", tag: "Парки" },
-  { name: "Парк Гоголя", value: 2.2, desk: "Крутое место", tag: "Парки" },
-  { name: "Парк Гоголя", value: 2.2, desk: "Крутое место", tag: "Парки" },
-  { name: "Парк Гоголя", value: 2.2, desk: "Крутое место", tag: "Парки" },
-  {
-    name: "Памятник Петру",
-    value: 5,
-    desk: "Здесь можно побухать",
-    tag: "Памятники",
-  },
+let TEST_PLACES = [
+  // { name: "Парк Петра", value: 3.7, desk: "Крутое место", tag: "Парки" },
+  // { name: "Парк Гоголя", value: 2.2, desk: "Крутое место", tag: "Парки" },
+  // { name: "Парк Гоголя", value: 2.2, desk: "Крутое место", tag: "Парки" },
+  // { name: "Парк Гоголя", value: 2.2, desk: "Крутое место", tag: "Парки" },
+  // { name: "Парк Гоголя", value: 2.2, desk: "Крутое место", tag: "Парки" },
+  // { name: "Парк Гоголя", value: 2.2, desk: "Крутое место", tag: "Парки" },
+  // {
+  //   name: "Памятник Петру",
+  //   value: 5,
+  //   desk: "Здесь можно побухать",
+  //   tag: "Памятники",
+  // },
 ];
+
+/*
+{
+"status": "success",
+"data": [
+{
+"id": 3,
+"type": 6,
+"lat": "14.880",
+"lng": "17.992",
+"name": "Test",
+"description": "cho",
+"address": "korpus e-bat"
+},
+{
+"id": 4,
+"type": 6,
+"lat": "14.880",
+"lng": "17.992",
+"name": "Tes2t",
+"description": "cho",
+"address": "korpus e-bat"
+},
+{
+"id": 5,
+"type": 6,
+"lat": "14.880",
+"lng": "17.992",
+"name": "Tes2t1",
+"description": "cho",
+"address": "korpus e-bat"
+},
+{
+"id": 6,
+"type": 3,
+"lat": "14.880",
+"lng": "17.992",
+"name": "Tes2t122",
+"description": "cho",
+"address": "korpus e-bat"
+}
+]
+}
+
+*/
 
 let load = (tag) => {
   let select = [];
@@ -53,10 +100,23 @@ let load = (tag) => {
 };
 
 export default function Search() {
-  if (TEST_PLACES.length === 0 || true)
-    axios
-      .get("http://10.131.56.212:8465/api/sights/all", {})
-      .then((res) => console.log(res));
+  if (TEST_PLACES.length === 0) {
+    axios.get("http://10.131.56.212:8465/api/sights/all", {}).then((res) => {
+      console.log(res);
+      TEST_PLACES = [];
+      response.data.forEach((el) => {
+        TEST_PLACES.push({
+          address: el.address,
+          desk: el.description,
+          name: el.name,
+          lat: el.lat,
+          lng: el.lng,
+          value: el.reviewCount === 0 ? 0 : el.averageRating,
+          tag: TAGS[el.type - 1],
+        });
+      });
+    });
+  }
 
   const arr = [
     { 1: 1 },
@@ -73,8 +133,6 @@ export default function Search() {
     { 1: 1 },
     { 1: 1 },
   ];
-
-  const TAGS = ["Музеи", "Галереи", "Памятники", "Парки", "Театры", "Сувениры"];
 
   const menu = [
     {
